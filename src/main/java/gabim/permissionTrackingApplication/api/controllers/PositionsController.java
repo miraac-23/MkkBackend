@@ -37,7 +37,7 @@ public class PositionsController {
 		
 	}
 
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	public Result delete(@RequestParam PositionEntity positionEntity) {
 		
 		return this.positionService.delete(positionEntity);

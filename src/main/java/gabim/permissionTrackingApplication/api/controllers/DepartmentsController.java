@@ -4,6 +4,7 @@ import java.util.List;
 
 import gabim.permissionTrackingApplication.entity.DepartmentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import gabim.permissionTrackingApplication.service.DepartmentService;
@@ -24,19 +25,22 @@ public class DepartmentsController {
 	}
 
 	@PostMapping("/add")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
 	public Result add(@RequestBody DepartmentCreateDto departmentCreateDto) {
 
 		return departmentService.add(departmentCreateDto);
 	}
 
 	@GetMapping("/getAll")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
 	public DataResult<List<DepartmentOzetDto>> getAll() {
 
 		return departmentService.getAll();
 
 	}
 
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
 	public Result delete(@RequestParam DepartmentEntity departmentEntity){
 		return this.departmentService.delete(departmentEntity);
 	}

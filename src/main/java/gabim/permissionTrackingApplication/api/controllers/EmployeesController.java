@@ -5,15 +5,7 @@ import java.util.List;
 import gabim.permissionTrackingApplication.dto.Employee.EmployeeListDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import gabim.permissionTrackingApplication.service.EmployeeService;
@@ -36,13 +28,14 @@ public class EmployeesController {
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
     public Result add(@RequestBody EmployeeCreateDto employeeCreateDto) {
         return this.employeeService.add(employeeCreateDto);
     }
 
 
     @GetMapping("/getAll")
-    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
     public DataResult<List<EmployeeListDto>> getAll() {
         return this.employeeService.getAll();
 
@@ -56,7 +49,8 @@ public class EmployeesController {
     }
 
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
     public Result delete(@RequestParam EmployeeEntity employeeEntity) {
 
         return this.employeeService.delete(employeeEntity);
