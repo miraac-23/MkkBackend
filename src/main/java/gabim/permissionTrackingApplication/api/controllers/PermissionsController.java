@@ -43,7 +43,7 @@ public class PermissionsController {
 		
 	}
 
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	public Result delete(@RequestParam PermissionEntity permission) {
 		return this.permissionService.delete(permission);
 	}

@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeDto;
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeListDto;
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeLoginDto;
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeUpdateDto;
+import gabim.permissionTrackingApplication.dto.Employee.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import gabim.permissionTrackingApplication.entity.EmployeeEntity;
@@ -43,7 +41,11 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Intege
 
 	
 	//List<Employee> getById(List<Integer> position);
-	
-	
+	@Query("Select new gabim.permissionTrackingApplication.dto.Employee.EmployeeWithDepartmentAndPositionDto(p.id,p.tcNo,p.name,p.surname,p.phoneNumber,p.email,p.userType, c.name) From  DepartmentEntity  c  Inner Join c.employees p ")
+	List<EmployeeWithDepartmentAndPositionDto> getEmployeeWithPosition();
+
+	// @Query(value = "SELECT st FROM Student st INNER JOIN FETCH st.branch b INNER JOIN FETCH st.gender g INNER JOIN FETCH st.room r")
+
+
 
 }

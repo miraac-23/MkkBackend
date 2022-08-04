@@ -2,7 +2,7 @@ package gabim.permissionTrackingApplication.api.controllers;
 
 import java.util.List;
 
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeListDto;
+import gabim.permissionTrackingApplication.dto.Employee.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import gabim.permissionTrackingApplication.service.EmployeeService;
 import gabim.permissionTrackingApplication.core.utilities.results.DataResult;
 import gabim.permissionTrackingApplication.core.utilities.results.Result;
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeCreateDto;
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeUpdateDto;
-import gabim.permissionTrackingApplication.dto.Employee.EmployeeWithPositionDto;
 import gabim.permissionTrackingApplication.entity.EmployeeEntity;
 
 @RestController
@@ -36,12 +33,24 @@ public class EmployeesController {
 
     @GetMapping("/getAll")
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
-    public DataResult<List<EmployeeListDto>> getAll() {
+    public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getAll() {
         return this.employeeService.getAll();
 
     }
 
+    @GetMapping("/getEmployeeWithPosition")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
+    public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition() {
+        return this.employeeService.getEmployeeWithPosition();
+
+    }
+
+
+
+
+
     @GetMapping("/getEmployeeWithPositionDetails")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
     public DataResult<List<EmployeeWithPositionDto>> getEmployeeWithPositionDetails() {
 
         return this.employeeService.getEmployeeWithPositionDetails();

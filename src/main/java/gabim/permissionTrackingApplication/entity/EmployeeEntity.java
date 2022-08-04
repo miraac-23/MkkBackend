@@ -2,6 +2,7 @@ package gabim.permissionTrackingApplication.entity;
 
 
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import lombok.Getter;
 @NoArgsConstructor
 @Entity
 @Table(name = "employee")
-public class EmployeeEntity {
+public class EmployeeEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

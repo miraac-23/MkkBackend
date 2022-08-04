@@ -63,11 +63,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public DataResult<List<EmployeeListDto>> getAll() {
+	public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getAll() {
 
 		List<EmployeeEntity> employeeListDtoList = employeeRepository.findAll();
 
-		return new SuccessDataResult<List<EmployeeListDto>>(employeeMapper.entityListToListDtoList(employeeListDtoList),"Data Listelendi");
+		return new SuccessDataResult<List<EmployeeWithDepartmentAndPositionDto>>(employeeMapper.entityListToDpListDtoList(employeeListDtoList),"Data Listelendi");
+	}
+
+	/*
+	* List<EmployeeEntity> employeeListDtoList = employeeRepository.findAll();
+
+		return new SuccessDataResult<List<EmployeeWithDepartmentAndPositionDto>>(employeeMapper.entityListToDpListDtoList(employeeListDtoList),"Data Listelendi");*/
+	@Override
+	public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition() {
+
+		return new SuccessDataResult<List<EmployeeWithDepartmentAndPositionDto>>(this.employeeRepository.getEmployeeWithPosition(),"Data Listelendi");
+
+
 	}
 
 	@Override
@@ -99,11 +111,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
-
-
-
-	/*	List<PermissionEntity> permissionEntityList = permissionRepository.findAll();
-		return new SuccessDataResult<List<PermissionListDto>>(permissionMapper.entityListToPermissionListDtoList(permissionEntityList),"Data Listeleme Başarılı") ;*/
 	@Override
 	public DataResult<EmployeeUpdateDto> getById(Integer id) {
 
@@ -112,7 +119,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
-//			EmployeeEntity employeeEntity = employeeMapper.createDtoToEntity(employeeCreateDto);
+
 	@Override
 	public DataResult<EmployeeListDto> getByName(String name) {
 
@@ -120,19 +127,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 
-
-
-
-
-
-
-	/*return new SuccessDataResult<Personel>
-		(this.personelDao.getByPersonelAdi(personelAdi),"Data listelendi");*/
-/*	@Override
-	public DataResult<EmployeeListDto> getByName(String name) {
-
-		return new SuccessDataResult<EmployeeListDto>(employeeRepository.getByName(name),"Data Listelendi");
-	}*/
 
 	@Override
 	public DataResult<EmployeeListDto> getByNameAndId(String name, int id) {
@@ -157,6 +151,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 	/*
 	 * private EmployeeDao employeeDao; private PositionDao positionDao; private
 	 * DepartmentDao departmentDao;
