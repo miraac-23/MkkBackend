@@ -26,24 +26,7 @@ public class PermissionDto {
 
 	private int permissionDay;
 
-/*
-* 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
 
-	@Column(name = "starting_date")
-	private Date startingDate;
-
-	@Column(name = "end_date")
-	private Date endDate;
-
-	@Column(name = "statement")
-	private String statement;
-
-
-	@Column(name = "permission_day")
-	private int permissionDay;*/
 
 
 

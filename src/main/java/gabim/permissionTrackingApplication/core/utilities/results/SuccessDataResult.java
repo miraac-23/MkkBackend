@@ -1,5 +1,7 @@
 package gabim.permissionTrackingApplication.core.utilities.results;
 
+import gabim.permissionTrackingApplication.entity.EmployeeEntity;
+
 public class SuccessDataResult<T> extends DataResult<T>{
 
 	public SuccessDataResult(T data, String message) {
@@ -12,12 +14,7 @@ public class SuccessDataResult<T> extends DataResult<T>{
 		
 		super(data,true);
 	}
-	
-	public SuccessDataResult(String message) {
-		
-		
-		super(null, true,  message);
-	}
+
 	
 	public SuccessDataResult() {
 		

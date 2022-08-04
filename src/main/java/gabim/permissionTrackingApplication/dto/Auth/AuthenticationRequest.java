@@ -1,4 +1,4 @@
-package gabim.permissionTrackingApplication.dto;
+package gabim.permissionTrackingApplication.dto.Auth;
 
 import lombok.Data;
 

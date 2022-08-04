@@ -6,6 +6,7 @@ import gabim.permissionTrackingApplication.core.utilities.results.*;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionCreateDto;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionDto;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionListDto;
+import gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto;
 import gabim.permissionTrackingApplication.entity.EmployeeEntity;
 import gabim.permissionTrackingApplication.entity.PermissionTypeEntity;
 import gabim.permissionTrackingApplication.mapper.PermissionMapper;
@@ -96,6 +97,19 @@ public class PermissionServiceImpl implements PermissionService {
 			return new ErrorResult("İzin Silme İşlemi Başarısız. Hata: " + e.getMessage());
 		}
 
+	}
+	/*
+	* 	@Override
+	public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition() {
+
+		return new SuccessDataResult<List<EmployeeWithDepartmentAndPositionDto>>(this.employeeRepository.getEmployeeWithPosition(),"Data Listelendi");
+
+
+	}*/
+
+	@Override
+	public DataResult<List<PermissionWithEmployeeAndPermissionTypeDto>> getPermissionWithEmployeeAndPermissionType() {
+		return  new SuccessDataResult<List<PermissionWithEmployeeAndPermissionTypeDto>>(this.permissionRepository.getPermissionWithEmployeeDetails(),"Data Listeleme Başarılı");
 	}
 	/*
 	 * private PermissionDao permissionDao;

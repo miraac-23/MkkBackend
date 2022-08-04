@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
-import lombok.*;
+import java.util.Date;
 
 
 @Getter
@@ -24,20 +23,20 @@ public class EmployeeWithDepartmentAndPositionDto {
 
     private String surname;
 
-    /*   private Date startDateOfWork;
+    private Date startDateOfWork;
 
-   private Date leaveDateOfWork;
+    private Date leaveDateOfWork;
 
-     private Date birthday;*/
+    private Date birthday;
 
-     private int phoneNumber;
+    private int phoneNumber;
 
-     private String email;
+    private String email;
 
      private String userType;
 
     private String departmentName;
 
-    //private String positionName;
+    private String positionName;
 
 }

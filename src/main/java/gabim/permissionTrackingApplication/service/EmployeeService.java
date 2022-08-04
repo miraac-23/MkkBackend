@@ -9,26 +9,15 @@ import gabim.permissionTrackingApplication.entity.EmployeeEntity;
 
 public interface EmployeeService {
 	Result add(EmployeeCreateDto employeeCreateDto);
-	//DataResult<List<EmployeeListDto>> getAll();
 	DataResult<List<EmployeeWithDepartmentAndPositionDto>> getAll();
 	Result delete(EmployeeEntity employeeEntity);
 	Result update(EmployeeUpdateDto employeeUpdateDto , Integer id);
 
-	//EmployeeUpdateDto getById(Integer id);
-
-	DataResult<EmployeeUpdateDto> getById(Integer id);
-
-	//DataResult<EmployeeUpdateDto> getByName(String name);
-
-
-
-	DataResult<EmployeeListDto> getByName(String name);
-	DataResult<EmployeeListDto> getByNameAndId(String name, int id);
-	DataResult<List<EmployeeListDto>> getByNameOrId(String name, int id);
-	DataResult<List<EmployeeListDto>> getByNameStartsWith(String name);
-	DataResult<List<EmployeeWithPositionDto>> getEmployeeWithPositionDetails();
-
 	DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition();
+
+	DataResult<EmployeeEntity> getByEmployeeName(String employeeName);
+
+	DataResult<EmployeeDto> getById(Integer id);
 
 
 }

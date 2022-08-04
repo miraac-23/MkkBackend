@@ -4,7 +4,9 @@ import java.util.List;
 
 import gabim.permissionTrackingApplication.dto.Permission.PermissionCreateDto;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionListDto;
+import gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +43,13 @@ public class PermissionsController {
 		
 		return this.permissionService.getAll();
 		
+	}
+
+	@GetMapping("/getPermissionWithEmployeeAndPermissionType")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
+	public DataResult<List<PermissionWithEmployeeAndPermissionTypeDto>> getPermissionWithEmployeeAndPermissionType(){
+
+		return this.permissionService.getPermissionWithEmployeeAndPermissionType();
 	}
 
 	@DeleteMapping("/delete")

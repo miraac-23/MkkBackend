@@ -1,6 +1,7 @@
 package gabim.permissionTrackingApplication.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import gabim.permissionTrackingApplication.core.utilities.results.*;
 import gabim.permissionTrackingApplication.dto.Employee.*;
@@ -70,10 +71,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return new SuccessDataResult<List<EmployeeWithDepartmentAndPositionDto>>(employeeMapper.entityListToDpListDtoList(employeeListDtoList),"Data Listelendi");
 	}
 
-	/*
-	* List<EmployeeEntity> employeeListDtoList = employeeRepository.findAll();
+	@Override
+	public DataResult<EmployeeDto> getById(Integer id) {
+		EmployeeEntity employeeEntity = employeeRepository.findById(id).orElse(null);
+		//if null
 
-		return new SuccessDataResult<List<EmployeeWithDepartmentAndPositionDto>>(employeeMapper.entityListToDpListDtoList(employeeListDtoList),"Data Listelendi");*/
+		return new SuccessDataResult<>(employeeMapper.entityToDto(employeeEntity),"Dad");
+	}
+	@Override
+	public DataResult<EmployeeEntity> getByEmployeeName(String employeeName) {
+		return null;
+	}
+
+
+
+
 	@Override
 	public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition() {
 
@@ -81,6 +93,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	}
+
+
+
 
 	@Override
 	public Result delete(EmployeeEntity employeeEntity) {
@@ -97,8 +112,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		try{
 			EmployeeEntity oldEmployee =this.employeeRepository.getById(id);
 					//getEmployee(id);
-
-
 			oldEmployee.setSurname(employeeUpdateDto.getSurname());
 			oldEmployee.setPhoneNumber(employeeUpdateDto.getPhoneNumber());
 			oldEmployee.setEmail(employeeUpdateDto.getEmail());
@@ -111,154 +124,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
+
+/*
 	@Override
-	public DataResult<EmployeeUpdateDto> getById(Integer id) {
-
-
-		return null;
-
+	public DataResult<EmployeeEntity> getByEmployeeName(String name) {
+		return new SuccessDataResult<EmployeeEntity>(this.employeeRepository.getByEmployeeName(name),"Data Listeleme Başarılı");
 	}
-
-
-	@Override
-	public DataResult<EmployeeListDto> getByName(String name) {
-
-	return new SuccessDataResult<EmployeeListDto>();
-	}
+*/
 
 
 
-	@Override
-	public DataResult<EmployeeListDto> getByNameAndId(String name, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public DataResult<List<EmployeeListDto>> getByNameOrId(String name, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DataResult<List<EmployeeListDto>> getByNameStartsWith(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DataResult<List<EmployeeWithPositionDto>> getEmployeeWithPositionDetails() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	/*
-	 * private EmployeeDao employeeDao; private PositionDao positionDao; private
-	 * DepartmentDao departmentDao;
-	 * 
-	 * @Autowired public EmployeeServiceImpl(EmployeeDao employeeDao, PositionDao
-	 * positionDao, DepartmentDao departmentDao) { super(); this.employeeDao =
-	 * employeeDao; this.positionDao = positionDao; this.departmentDao =
-	 * departmentDao; }
-	 * 
-	 * @Override public DataResult<List<EmployeeEntity>> getAll() {
-	 * 
-	 * return new SuccessDataResult<List<EmployeeEntity>>(this.employeeDao.findAll()
-	 * ,"Data Listelendi"); }
-	 * 
-	 * 
-	 * @Override public Result add(EmployeeDto employeeDto) {
-	 * 
-	 * EmployeeEntity employee = new EmployeeEntity();
-	 * 
-	 * PositionEntity position =
-	 * this.positionDao.findById(employeeDto.getPositionId()).get();
-	 * employee.setPosition(position);
-	 * 
-	 * DepartmentEntity department =
-	 * this.departmentDao.findById(employeeDto.getDepartmentId()).get();
-	 * employee.setDepartment(department);
-	 * 
-	 * 
-	 * employee.setTcNo(employeeDto.getTcNo());
-	 * employee.setName(employeeDto.getName());
-	 * employee.setSurname(employeeDto.getSurname());
-	 * employee.setStartDateOfWork(employeeDto.getStartDateOfWork());
-	 * employee.setLeaveDateOfWork(employeeDto.getLeaveDateOfWork());
-	 * employee.setBirthday(employeeDto.getBirthday());
-	 * employee.setPhoneNumber(employeeDto.getPhoneNumber());
-	 * employee.setEmail(employeeDto.getEmail());
-	 * employee.setPassword(employeeDto.getPassword());
-	 * employee.setUserType(employeeDto.getUserType());
-	 * 
-	 * this.employeeDao.save(employee);
-	 * 
-	 * return new SuccessResult("Personel Eklendi"); }
-	 * 
-	 * @Override public Result delete(EmployeeEntity employee) {
-	 * 
-	 * this.employeeDao.delete(employee);
-	 * 
-	 * return new SuccessResult("Personel Silindi"); }
-	 * 
-	 * 
-	 * @Override public Result update(EmployeeUpdateDto employeeUpdateDto , Integer
-	 * id) { EmployeeEntity oldEmployee = getEmployee(id);
-	 * 
-	 * oldEmployee.setSurname(employeeUpdateDto.getSurname());
-	 * oldEmployee.setPhoneNumber(employeeUpdateDto.getPhoneNumber());
-	 * oldEmployee.setEmail(employeeUpdateDto.getEmail());
-	 * oldEmployee.setPassword(employeeUpdateDto.getPassword());
-	 * 
-	 * this.employeeDao.save(oldEmployee); return new
-	 * SuccessResult("Personel Güncellendi"); }
-	 * 
-	 * 
-	 * @Override public EmployeeEntity getEmployee(Integer id) {
-	 * 
-	 * return employeeDao.getById(id); }
-	 * 
-	 * 
-	 * 
-	 * @Override public DataResult<EmployeeEntity> getByName(String name) { //
-	 * business code write here
-	 * 
-	 * return new
-	 * SuccessDataResult<EmployeeEntity>(this.employeeDao.getByName(name),
-	 * "Data Listelendi"); }
-	 * 
-	 * @Override public DataResult<EmployeeEntity> getByNameAndId(String name, int
-	 * id) {
-	 * 
-	 * // business code write here
-	 * 
-	 * return new
-	 * SuccessDataResult<EmployeeEntity>(this.employeeDao.getByNameAndId(name, id),
-	 * "Data Listelendi"); }
-	 * 
-	 * @Override public DataResult<List<EmployeeEntity>> getByNameOrId(String name,
-	 * int id) { // business code write here
-	 * 
-	 * return new
-	 * SuccessDataResult<List<EmployeeEntity>>(this.employeeDao.getByNameOrId(name,
-	 * id), "Data Listelendi"); }
-	 * 
-	 * @Override public DataResult<List<EmployeeEntity>> getByNameStartsWith(String
-	 * name) { // business code write here
-	 * 
-	 * return new
-	 * SuccessDataResult<List<EmployeeEntity>>(this.employeeDao.getByNameStartsWith(
-	 * name), "Data Listelendi"); }
-	 * 
-	 * @Override public DataResult<List<EmployeeWithPositionDto>>
-	 * getEmployeeWithPositionDetails() { // business code write here
-	 * 
-	 * return new SuccessDataResult<List<EmployeeWithPositionDto>>(this.employeeDao.
-	 * getEmployeeWithPositionDetails(),"Data Listelendi"); }
-	 * 
-	 * 
-	 * 
-	 */
 
 }

@@ -5,6 +5,7 @@ package gabim.permissionTrackingApplication.mapper;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionCreateDto;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionDto;
 import gabim.permissionTrackingApplication.dto.Permission.PermissionListDto;
+import gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto;
 import gabim.permissionTrackingApplication.entity.PermissionEntity;
 import org.mapstruct.Mapper;
 
@@ -24,11 +25,13 @@ public interface PermissionMapper {
 
     PermissionEntity createDtoToEntity(PermissionCreateDto permissionCreateDto);
 
+    List<PermissionWithEmployeeAndPermissionTypeDto> entityListToDpListDtoList(List<PermissionEntity> permissionEntityList);
+
 
 
 }
 
-
+//    List<EmployeeWithDepartmentAndPositionDto> entityListToDpListDtoList(List<EmployeeEntity> employeeEntityList);
 /*
 DepartmentOzetDto entityToOzetDto(DepartmentEntity departmentEntity);
 	List<DepartmentOzetDto> entityListToOzetDtoList(List<DepartmentEntity> departmentEntityList);

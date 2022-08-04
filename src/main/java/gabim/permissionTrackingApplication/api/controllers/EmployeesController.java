@@ -42,20 +42,15 @@ public class EmployeesController {
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
     public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition() {
         return this.employeeService.getEmployeeWithPosition();
-
     }
 
-
-
-
-
-    @GetMapping("/getEmployeeWithPositionDetails")
+    @GetMapping("/getById")
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
-    public DataResult<List<EmployeeWithPositionDto>> getEmployeeWithPositionDetails() {
-
-        return this.employeeService.getEmployeeWithPositionDetails();
+    public DataResult<EmployeeDto> findById(@RequestParam Integer id) {
+        return this.employeeService.getById(id);
 
     }
+
 
 
     @DeleteMapping("/delete")
@@ -72,30 +67,13 @@ public class EmployeesController {
     }
 
 
-    @GetMapping("/getByName")
-    public DataResult<EmployeeListDto> getByName(@RequestParam String name) {
-
-        return this.employeeService.getByName(name);
-    }
 
 
-    @GetMapping("/getByNameAndId")
-    public DataResult<EmployeeListDto> getByNameAndId(@RequestParam String name, @RequestParam int id) {
-
-        return this.employeeService.getByNameAndId(name, id);
-    }
 
 
-    @GetMapping("/getByNameStartsWith")
-    DataResult<List<EmployeeListDto>> getByNameStartsWith(@RequestParam String name) {
 
-        return this.employeeService.getByNameStartsWith(name);
-    }
 
-    @GetMapping
-    public DataResult<EmployeeUpdateDto> getById(@RequestParam Integer id) {
 
-        return this.employeeService.getById(id);
-    }
+
 
 }

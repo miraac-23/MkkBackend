@@ -16,22 +16,22 @@ public interface EmployeeMapper {
 
     EmployeeEntity dtoToEntity(EmployeeDto employeeDto);
 
-
-    List<EmployeeDto> entityListToDtoList(List<EmployeeEntity> employeeEntityList);
-
-    List<EmployeeEntity> dtoListToEntityList(List<EmployeeDto> employeeDtoList);
-
     EmployeeEntity createDtoToEntity(EmployeeCreateDto employeeCreateDto);
-
-    EmployeeEntity listDtoToEntity(EmployeeListDto employeeListDto);
-
-    List<EmployeeListDto> entityListToListDtoList(List<EmployeeEntity> employeeEntityList);
 
     List<EmployeeWithDepartmentAndPositionDto> entityListToDpListDtoList(List<EmployeeEntity> employeeEntityList);
 
+    EmployeeUpdateDto entityToUpdateToDto(EmployeeEntity employeeEntity);
+
     EmployeeListDto entityToListDto(EmployeeEntity employeeEntity);
 
-   // EmployeeListDto entityToListDto(EmployeeEntity employeeEntity)
+
+
+
+    /*
+    * 	DepartmentEntity createDtoToEntity(DepartmentCreateDto departmentCreateDto);
+	DepartmentOzetDto entityToOzetDto(DepartmentEntity departmentEntity);
+	List<DepartmentOzetDto> entityListToOzetDtoList(List<DepartmentEntity> departmentEntityList);*/
+
 
    // DepartmentOzetDto entityToOzetDto(DepartmentEntity departmentEntity);
    // List<DepartmentOzetDto> entityListToOzetDtoList(List<DepartmentEntity> departmentEntityList);

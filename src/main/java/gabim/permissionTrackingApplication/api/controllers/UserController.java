@@ -1,6 +1,6 @@
 package gabim.permissionTrackingApplication.api.controllers;
 
-import gabim.permissionTrackingApplication.dto.AuthenticationRequest;
+import gabim.permissionTrackingApplication.dto.Auth.AuthenticationRequest;
 import gabim.permissionTrackingApplication.payload.JwtResponse;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.spec.SecretKeySpec;
-import javax.servlet.http.HttpServletResponse;
 import java.security.Key;
 import java.util.*;
 
