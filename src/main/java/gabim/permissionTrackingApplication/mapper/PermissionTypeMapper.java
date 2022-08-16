@@ -4,6 +4,7 @@ import java.util.List;
 
 import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeCreateDto;
 import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeListDto;
+import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeListingDto;
 import org.mapstruct.Mapper;
 
 import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeDto;
@@ -18,6 +19,9 @@ public interface PermissionTypeMapper {
     PermissionTypeEntity createDtoToEntity(PermissionTypeCreateDto permissionTypeCreateDto);
     List<PermissionTypeListDto> entityListToListDtoList(List<PermissionTypeEntity> permissionTypeEntityList);
 
+    List<PermissionTypeListingDto> entitiyListToDtoList(List<PermissionTypeEntity> permissionTypeEntityList);
+
 
 
 }
+//

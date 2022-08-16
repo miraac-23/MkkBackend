@@ -17,6 +17,17 @@ import java.sql.Date;
 @NoArgsConstructor
 public class PermissionCreateDto {
 
+    private int tcNo;
+
+    private String employeeName;
+
+    private String employeeSurname;
+
+    private String employeePosition;
+
+    private String employeeDepartment;
+
+    private String permissionTypeName;
 
     private Date startingDate;
 

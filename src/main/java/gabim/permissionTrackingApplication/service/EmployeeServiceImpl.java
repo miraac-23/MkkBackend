@@ -80,6 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public DataResult<EmployeeEntity> getByEmployeeName(String employeeName) {
+
 		return null;
 	}
 
@@ -95,8 +96,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 
-
-
 	@Override
 	public Result delete(EmployeeEntity employeeEntity) {
 		try {
@@ -107,10 +106,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 	@Override
-	public Result update(EmployeeUpdateDto employeeUpdateDto, Integer id) {
+	public Result update(EmployeeUpdateDto employeeUpdateDto) {
 
 		try{
-			EmployeeEntity oldEmployee =this.employeeRepository.getById(id);
+			EmployeeEntity oldEmployee = this.employeeRepository.findById(employeeUpdateDto.getEmployeeId()).get();
 					//getEmployee(id);
 			oldEmployee.setSurname(employeeUpdateDto.getSurname());
 			oldEmployee.setPhoneNumber(employeeUpdateDto.getPhoneNumber());
@@ -125,12 +124,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 
-/*
-	@Override
-	public DataResult<EmployeeEntity> getByEmployeeName(String name) {
-		return new SuccessDataResult<EmployeeEntity>(this.employeeRepository.getByEmployeeName(name),"Data Listeleme Başarılı");
-	}
-*/
+
 
 
 

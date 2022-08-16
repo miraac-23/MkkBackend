@@ -2,19 +2,13 @@ package gabim.permissionTrackingApplication.api.controllers;
 
 import java.util.List;
 
+import gabim.permissionTrackingApplication.core.utilities.results.SuccessDataResult;
 import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeCreateDto;
-import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeListDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import gabim.permissionTrackingApplication.service.PermissionTypeService;
-import gabim.permissionTrackingApplication.core.utilities.results.DataResult;
 import gabim.permissionTrackingApplication.core.utilities.results.Result;
 import gabim.permissionTrackingApplication.dto.PermissionType.PermissionTypeDto;
 import gabim.permissionTrackingApplication.entity.PermissionTypeEntity;
@@ -34,19 +28,22 @@ public class PermissionTypesController {
 	
 	
 	@GetMapping("/getAll")
-	public DataResult<List<PermissionTypeListDto>> getAll(){
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
+	public SuccessDataResult<List<PermissionTypeDto>> getAll(){
 		
 		return this.permissionTypeService.getAll();
 		
 	}
+
 	
 	@PostMapping("/add")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_IK')")
 	public Result add(@RequestBody PermissionTypeCreateDto permissionTypeCreateDto) {
 		
 		return this.permissionTypeService.add(permissionTypeCreateDto);
 	}
 	
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	public Result delete(@RequestParam PermissionTypeEntity permissionTypeEntity) {
 		
 		return this.permissionTypeService.delete(permissionTypeEntity);

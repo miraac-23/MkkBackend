@@ -57,6 +57,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return new SuccessDataResult<List<DepartmentOzetDto>>(departmentMapper.entityListToOzetDtoList(departmentList), "Data Listelendi");
 	}
 
+
+
 	@Override
 	public Result delete(DepartmentEntity departmentEntity) {
 		try {

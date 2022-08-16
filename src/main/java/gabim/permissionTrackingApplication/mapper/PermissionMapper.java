@@ -31,10 +31,3 @@ public interface PermissionMapper {
 
 }
 
-//    List<EmployeeWithDepartmentAndPositionDto> entityListToDpListDtoList(List<EmployeeEntity> employeeEntityList);
-/*
-DepartmentOzetDto entityToOzetDto(DepartmentEntity departmentEntity);
-	List<DepartmentOzetDto> entityListToOzetDtoList(List<DepartmentEntity> departmentEntityList);
-
-
-	//DataResult<List<DepartmentOzetDto>> getAll();*/

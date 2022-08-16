@@ -11,7 +11,7 @@ public interface EmployeeService {
 	Result add(EmployeeCreateDto employeeCreateDto);
 	DataResult<List<EmployeeWithDepartmentAndPositionDto>> getAll();
 	Result delete(EmployeeEntity employeeEntity);
-	Result update(EmployeeUpdateDto employeeUpdateDto , Integer id);
+	Result update(EmployeeUpdateDto employeeUpdateDto );
 
 	DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition();
 

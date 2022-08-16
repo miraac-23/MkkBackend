@@ -16,5 +16,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class PermissionTypeCreateDto {
 
+
     private String name;
 }

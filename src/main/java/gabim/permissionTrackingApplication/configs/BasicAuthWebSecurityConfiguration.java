@@ -77,7 +77,7 @@ public class BasicAuthWebSecurityConfiguration {
     }
 
 
-    @Bean
+ /*   @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
 
@@ -85,11 +85,12 @@ public class BasicAuthWebSecurityConfiguration {
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.addAllowedOriginPattern("**");
         corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
+        corsConfiguration.addAllowedMethod(HttpMethod.PATCH);
         //corsConfiguration.setExposedHeaders(exposedHeaders);
 
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
 
         return source;
-    }
+    }*/
 }

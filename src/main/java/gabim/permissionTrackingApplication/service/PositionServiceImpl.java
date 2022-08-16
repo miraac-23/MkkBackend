@@ -43,8 +43,7 @@ public class PositionServiceImpl implements PositionService {
 
 		List<PositionEntity> positionList = positionRepository.findAll();
 
-		return new SuccessDataResult<List<PositionListDto>>(positionMapper.entityListToPositionListDtoList(positionList),
-				"Data Listelendi");
+		return new SuccessDataResult<List<PositionListDto>>(positionMapper.entityListToPositionListDtoList(positionList), "Data Listelendi");
 	}
 
 

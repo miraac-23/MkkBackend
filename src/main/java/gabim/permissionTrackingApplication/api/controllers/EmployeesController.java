@@ -51,8 +51,6 @@ public class EmployeesController {
 
     }
 
-
-
     @DeleteMapping("/delete")
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
     public Result delete(@RequestParam EmployeeEntity employeeEntity) {
@@ -60,19 +58,12 @@ public class EmployeesController {
         return this.employeeService.delete(employeeEntity);
     }
 
-    @PatchMapping("/update")
-    public Result update(@RequestBody EmployeeUpdateDto employeeUpdateDto, Integer id) {
+    @PostMapping ("/update")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_IK')")
+    public Result update(@RequestBody EmployeeUpdateDto employeeUpdateDto) {
 
-        return this.employeeService.update(employeeUpdateDto, id);
+        return this.employeeService.update(employeeUpdateDto);
     }
-
-
-
-
-
-
-
-
 
 
 
