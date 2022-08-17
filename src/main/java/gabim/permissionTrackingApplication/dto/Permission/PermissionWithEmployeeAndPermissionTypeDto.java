@@ -14,6 +14,7 @@ import java.util.Date;
 public class PermissionWithEmployeeAndPermissionTypeDto {
 
     private int id;
+
     private Date startingDate;
 
     private Date endDate;
@@ -25,4 +26,10 @@ public class PermissionWithEmployeeAndPermissionTypeDto {
     private String permissionTypeName;
 
     private String employeeName;
+
+    private String employeeSurname;
+
+    private String employeeDepartment;
+
+    private String employeePosition;
 }

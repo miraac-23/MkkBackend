@@ -38,11 +38,13 @@ public class EmployeesController {
 
     }
 
+
     @GetMapping("/getEmployeeWithPosition")
-    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
+    @PreAuthorize("hasAnyRole('ROLE_Admin','ROLE_IK')")
     public DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition() {
         return this.employeeService.getEmployeeWithPosition();
     }
+
 
     @GetMapping("/getById")
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")

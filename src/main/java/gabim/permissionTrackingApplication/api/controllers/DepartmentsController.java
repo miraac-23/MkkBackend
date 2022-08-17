@@ -25,7 +25,7 @@ public class DepartmentsController {
 	}
 
 	@PostMapping("/add")
-	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_IK')")
 	public Result add(@RequestBody DepartmentCreateDto departmentCreateDto) {
 
 		return departmentService.add(departmentCreateDto);
@@ -40,7 +40,7 @@ public class DepartmentsController {
 	}
 
 	@DeleteMapping("/delete")
-	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_IK')")
 	public Result delete(@RequestParam DepartmentEntity departmentEntity){
 		return this.departmentService.delete(departmentEntity);
 	}

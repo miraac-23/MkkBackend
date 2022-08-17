@@ -78,12 +78,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		return new SuccessDataResult<>(employeeMapper.entityToDto(employeeEntity),"Dad");
 	}
-	@Override
-	public DataResult<EmployeeEntity> getByEmployeeName(String employeeName) {
-
-		return null;
-	}
-
 
 
 
@@ -95,6 +89,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
+
+	@Override
+	public DataResult<EmployeeEntity> getByEmployeeName(String employeeName) {
+
+		return null;
+	}
 
 	@Override
 	public Result delete(EmployeeEntity employeeEntity) {

@@ -14,13 +14,14 @@ public interface PermissionRepository extends JpaRepository<PermissionEntity, In
 
 	PermissionEntity getById(Integer id);
 
-	@Query("Select new gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto(p.id,p.startingDate,p.endDate,p.statement,p.permissionDay,m.name,c.name) From EmployeeEntity c Inner Join c.permissions p Inner Join p.permissionType m ")
+	@Query("Select new gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto(k.id,k.startingDate,k.endDate,k.statement,k.permissionDay,t.name,p.name,p.surname,c.name,m.name) From DepartmentEntity c Inner Join c.employees p Inner Join p.position m Inner Join p.permissions k Inner Join k.permissionType t")
 	List<PermissionWithEmployeeAndPermissionTypeDto> getPermissionWithEmployeeDetails();
-
-	/*
-	* 	@Query("Select new gabim.permissionTrackingApplication.dto.Employee.EmployeeWithDepartmentAndPositionDto(p.id,p.tcNo,p.name,p.surname,p.phoneNumber,p.email,p.userType, c.name,m.name) From  DepartmentEntity  c  Inner Join c.employees p Inner Join p.position m ")
-	List<EmployeeWithDepartmentAndPositionDto> getEmployeeWithPosition();
-*/
 
 
 }
+
+
+
+
+
+
