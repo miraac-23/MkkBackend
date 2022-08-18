@@ -20,6 +20,8 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Intege
 
 	Optional<EmployeeEntity> findByName(String name);
 
+	EmployeeEntity getByTcNo(Integer tcNo);
+
 	Optional<EmployeeEntity> findByEmail(String email);
 
 	@Query("Select new gabim.permissionTrackingApplication.dto.Employee.EmployeeWithDepartmentAndPositionDto(p.id,p.tcNo,p.name,p.surname,p.startDateOfWork,p.leaveDateOfWork,p.birthday,p.phoneNumber,p.email,p.userType, c.name,m.name) From  DepartmentEntity  c  Inner Join c.employees p Inner Join p.position m ")

@@ -19,6 +19,8 @@ public interface EmployeeService {
 
 	DataResult<EmployeeDto> getById(Integer id);
 
+	DataResult<EmployeeDto> getByTcNo(Integer tcNo);
+
 
 
 

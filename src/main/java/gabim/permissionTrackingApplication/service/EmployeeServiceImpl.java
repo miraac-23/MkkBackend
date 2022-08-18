@@ -79,6 +79,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return new SuccessDataResult<>(employeeMapper.entityToDto(employeeEntity),"Dad");
 	}
 
+	@Override
+	public DataResult<EmployeeDto> getByTcNo(Integer tcNo) {
+
+		EmployeeEntity employeeEntity = employeeRepository.getByTcNo(tcNo);
+		return new SuccessDataResult<EmployeeDto>(employeeMapper.entityToDto(employeeEntity));
+
+	}
 
 
 	@Override

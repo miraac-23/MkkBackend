@@ -53,6 +53,13 @@ public class EmployeesController {
 
     }
 
+    @GetMapping("/getByTcNo")
+    @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
+    public DataResult<EmployeeDto> getByTcNo(@RequestParam Integer tcNo){
+
+        return this.employeeService.getByTcNo(tcNo);
+    }
+
     @DeleteMapping("/delete")
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
     public Result delete(@RequestParam EmployeeEntity employeeEntity) {
