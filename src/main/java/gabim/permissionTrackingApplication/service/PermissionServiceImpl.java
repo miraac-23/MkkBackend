@@ -1,5 +1,7 @@
 package gabim.permissionTrackingApplication.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import gabim.permissionTrackingApplication.core.utilities.results.*;
@@ -28,6 +30,7 @@ public class PermissionServiceImpl implements PermissionService {
 	private  PermissionRepository permissionRepository;
 	private  PermissionTypeRepository permissionTypeRepository;
 	private  EmployeeRepository employeeRepository;
+
 
 	@Autowired
 	public PermissionServiceImpl( PermissionRepository permissionRepository, PermissionTypeRepository permissionTypeRepository, EmployeeRepository employeeRepository) {
@@ -89,6 +92,17 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Override
 	public DataResult<List<PermissionWithEmployeeAndPermissionTypeDto>> getPermissionWithEmployeeAndPermissionType() {
+
+	/*	List<PermissionWithEmployeeAndPermissionTypeDto> permissionWithEmployeeAndPermissionTypeDtos = this.permissionRepository.getPermissionWithEmployeeDetails();
+		for(PermissionWithEmployeeAndPermissionTypeDto permissionWithEmployeeAndPermissionTypeDto: permissionWithEmployeeAndPermissionTypeDtos){
+
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = new Date();
+			formatter.format(date);
+
+			permissionWithEmployeeAndPermissionTypeDto.getStartingDate()
+		} */
+
 		return  new SuccessDataResult<List<PermissionWithEmployeeAndPermissionTypeDto>>(this.permissionRepository.getPermissionWithEmployeeDetails(),"Data Listeleme Başarılı");
 	}
 

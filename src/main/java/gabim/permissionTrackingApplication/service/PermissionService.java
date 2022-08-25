@@ -22,5 +22,3 @@ public interface PermissionService {
 
 }
 
-//	DataResult<List<EmployeeWithDepartmentAndPositionDto>> getEmployeeWithPosition();
-//DataResult<List<DepartmentOzetDto>> getAll();

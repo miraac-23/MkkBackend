@@ -32,4 +32,6 @@ public class PermissionWithEmployeeAndPermissionTypeDto {
     private String employeeDepartment;
 
     private String employeePosition;
+
+
 }
