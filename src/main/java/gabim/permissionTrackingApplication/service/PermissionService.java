@@ -4,10 +4,7 @@ import java.util.List;
 
 import gabim.permissionTrackingApplication.core.utilities.results.DataResult;
 import gabim.permissionTrackingApplication.core.utilities.results.Result;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionCreateDto;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionDto;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionListDto;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto;
+import gabim.permissionTrackingApplication.dto.Permission.*;
 import gabim.permissionTrackingApplication.entity.PermissionEntity;
 
 public interface PermissionService {
@@ -20,6 +17,8 @@ public interface PermissionService {
 
 	DataResult<List<PermissionWithEmployeeAndPermissionTypeDto>> getPermissionWithEmployeeAndPermissionType();
 	DataResult<PermissionDto> getById(Integer id);
+
+	DataResult<List<PermissionDaySum>> getPermissionDaySum();
 
 }
 

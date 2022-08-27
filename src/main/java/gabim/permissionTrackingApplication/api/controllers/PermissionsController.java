@@ -2,9 +2,7 @@ package gabim.permissionTrackingApplication.api.controllers;
 
 import java.util.List;
 
-import gabim.permissionTrackingApplication.dto.Permission.PermissionCreateDto;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionListDto;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto;
+import gabim.permissionTrackingApplication.dto.Permission.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import gabim.permissionTrackingApplication.service.PermissionService;
 import gabim.permissionTrackingApplication.core.utilities.results.DataResult;
 import gabim.permissionTrackingApplication.core.utilities.results.Result;
-import gabim.permissionTrackingApplication.dto.Permission.PermissionDto;
 import gabim.permissionTrackingApplication.entity.PermissionEntity;
 
 @RestController
@@ -46,7 +43,7 @@ public class PermissionsController {
 	}
 
 	@GetMapping("/getPermissionWithEmployeeAndPermissionType")
-	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel')")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
 	public DataResult<List<PermissionWithEmployeeAndPermissionTypeDto>> getPermissionWithEmployeeAndPermissionType(){
 
 		return this.permissionService.getPermissionWithEmployeeAndPermissionType();
@@ -63,6 +60,11 @@ public class PermissionsController {
 	public DataResult<PermissionDto> findById(@RequestParam Integer id){
 
 		return this.permissionService.getById(id);
+	}
+	@GetMapping("/getPermissionDaySum")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
+	public DataResult<List<PermissionDaySum>> getPermissionDaySum(){
+		return this.permissionService.getPermissionDaySum();
 	}
 
 	
