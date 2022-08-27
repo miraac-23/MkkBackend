@@ -49,7 +49,7 @@ public interface PermissionRepository extends JpaRepository<PermissionEntity, In
 
 
 
-     @Query(value ="SELECT new moon.odyssey.entity.YearReportSum(rp.year, SUM(rp.loanSmall), SUM (rp.loanMajor), SUM (rp.loanTotal)) FROM Report rp GROUP BY rp.year"
+
     )
 *
 *
