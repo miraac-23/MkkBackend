@@ -19,6 +19,7 @@ public interface PermissionService {
 	Result delete(PermissionEntity permissionEntity);
 
 	DataResult<List<PermissionWithEmployeeAndPermissionTypeDto>> getPermissionWithEmployeeAndPermissionType();
+	DataResult<PermissionDto> getById(Integer id);
 
 }
 

@@ -17,7 +17,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class PermissionCreateDto {
 
-    private int tcNo;
+    private long tcNo;
 
     private String employeeName;
 

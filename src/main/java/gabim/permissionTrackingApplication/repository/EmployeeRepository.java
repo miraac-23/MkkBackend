@@ -20,7 +20,7 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Intege
 
 	Optional<EmployeeEntity> findByName(String name);
 
-	EmployeeEntity getByTcNo(Integer tcNo);
+	EmployeeEntity getByTcNo(Long tcNo);
 
 	Optional<EmployeeEntity> findByEmail(String email);
 

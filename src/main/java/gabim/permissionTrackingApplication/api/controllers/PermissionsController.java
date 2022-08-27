@@ -57,5 +57,13 @@ public class PermissionsController {
 		return this.permissionService.delete(permission);
 	}
 
+
+	@GetMapping("/getById")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
+	public DataResult<PermissionDto> findById(@RequestParam Integer id){
+
+		return this.permissionService.getById(id);
+	}
+
 	
 }

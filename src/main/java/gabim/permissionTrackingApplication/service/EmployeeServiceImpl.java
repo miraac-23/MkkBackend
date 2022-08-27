@@ -80,7 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public DataResult<EmployeeDto> getByTcNo(Integer tcNo) {
+	public DataResult<EmployeeDto> getByTcNo(Long tcNo) {
 
 		EmployeeEntity employeeEntity = employeeRepository.getByTcNo(tcNo);
 		return new SuccessDataResult<EmployeeDto>(employeeMapper.entityToDto(employeeEntity));

@@ -106,5 +106,11 @@ public class PermissionServiceImpl implements PermissionService {
 		return  new SuccessDataResult<List<PermissionWithEmployeeAndPermissionTypeDto>>(this.permissionRepository.getPermissionWithEmployeeDetails(),"Data Listeleme Başarılı");
 	}
 
+	@Override
+	public DataResult<PermissionDto> getById(Integer id) {
+		PermissionEntity permissionEntity = permissionRepository.findById(id).orElse(null);
+
+		return new SuccessDataResult<>(permissionMapper.entityToDto(permissionEntity),"Data Listeleme Başarılı");	}
+
 
 }

@@ -9,7 +9,7 @@ import lombok.*;
 public class EmployeeUpdateDto {
 
 	private int employeeId;
-	private int phoneNumber;
+	private long phoneNumber;
 	private String surname;
 	private String email;
 	private String password;

@@ -29,6 +29,8 @@ public class PermissionWithEmployeeAndPermissionTypeDto {
 
     private String employeeSurname;
 
+    private int employeeId;
+
     private String employeeDepartment;
 
     private String employeePosition;

@@ -17,7 +17,7 @@ public class EmployeeWithDepartmentAndPositionDto {
 
     private int id;
 
-    private int tcNo;
+    private long tcNo;
 
     private String name;
 
@@ -29,7 +29,7 @@ public class EmployeeWithDepartmentAndPositionDto {
 
     private Date birthday;
 
-    private int phoneNumber;
+    private long phoneNumber;
 
     private String email;
 

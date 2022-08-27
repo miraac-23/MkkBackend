@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 public class EmployeeDto {
 
-	private int tcNo;
+	private long tcNo;
 	
 	private String name;
 	
@@ -24,7 +24,7 @@ public class EmployeeDto {
 	
 	private Date birthday;
 	
-	private int phoneNumber;
+	private long phoneNumber;
 	
 	private String email;
 	

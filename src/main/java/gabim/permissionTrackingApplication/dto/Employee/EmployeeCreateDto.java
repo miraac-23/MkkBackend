@@ -12,7 +12,7 @@ import lombok.*;
 public class EmployeeCreateDto {
 	
 
-	private int tcNo;
+	private long tcNo;
 	
 	private String name;
 	
@@ -24,7 +24,7 @@ public class EmployeeCreateDto {
 	
 	private Date birthday;
 	
-	private int phoneNumber;
+	private long phoneNumber;
 	
 	private String email;
 	

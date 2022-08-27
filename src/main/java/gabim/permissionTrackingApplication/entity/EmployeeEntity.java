@@ -34,8 +34,12 @@ public class EmployeeEntity{
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "tc_no")
+	/*@Column(name = "tc_no")
 	private int tcNo;
+	*/
+
+	@Column(name = "tc_no")
+	private long tcNo;
 	
 	@Column(name = "name")
 	private String name;
@@ -53,7 +57,7 @@ public class EmployeeEntity{
 	private Date birthday;
 	
 	@Column(name = "phone_number")
-	private int phoneNumber;
+	private long phoneNumber;
 	
 	@Column(name = "email")
 	private String email;

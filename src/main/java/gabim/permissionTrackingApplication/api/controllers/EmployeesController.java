@@ -55,7 +55,7 @@ public class EmployeesController {
 
     @GetMapping("/getByTcNo")
     @PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
-    public DataResult<EmployeeDto> getByTcNo(@RequestParam Integer tcNo){
+    public DataResult<EmployeeDto> getByTcNo(@RequestParam Long tcNo){
 
         return this.employeeService.getByTcNo(tcNo);
     }
