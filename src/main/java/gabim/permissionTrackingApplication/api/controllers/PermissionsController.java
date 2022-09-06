@@ -30,12 +30,14 @@ public class PermissionsController {
 	}
 
 	@PostMapping("/add")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
 	public Result add(@RequestBody PermissionCreateDto permissionCreateDto) {
 
 		return this.permissionService.add(permissionCreateDto);
 	}
 
 	@GetMapping("/getAll")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
 	public DataResult<List<PermissionListDto>> getAll(){
 		
 		return this.permissionService.getAll();
@@ -50,6 +52,7 @@ public class PermissionsController {
 	}
 
 	@DeleteMapping("/delete")
+	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
 	public Result delete(@RequestParam PermissionEntity permission) {
 		return this.permissionService.delete(permission);
 	}
@@ -61,6 +64,8 @@ public class PermissionsController {
 
 		return this.permissionService.getById(id);
 	}
+
+
 	@GetMapping("/getPermissionDaySum")
 	@PreAuthorize("hasAnyRole('ROLE_Admin', 'ROLE_Personel','ROLE_IK')")
 	public DataResult<List<PermissionDaySum>> getPermissionDaySum(){

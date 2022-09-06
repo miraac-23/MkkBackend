@@ -15,7 +15,7 @@ public interface PermissionRepository extends JpaRepository<PermissionEntity, In
 
 	//PermissionEntity getById(Integer id);
 
-	@Query("Select new gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto(k.id,k.startingDate,k.endDate,k.statement,k.permissionDay,t.name,p.name,p.surname,p.id,c.name,m.name) From DepartmentEntity c Inner Join c.employees p Inner Join p.position m Inner Join p.permissions k Inner Join k.permissionType t")
+	@Query("Select new gabim.permissionTrackingApplication.dto.Permission.PermissionWithEmployeeAndPermissionTypeDto(k.id,k.startingDate,k.endDate,k.statement,k.permissionDay,t.name,p.email,p.name,p.surname,p.id,c.name,m.name) From DepartmentEntity c Inner Join c.employees p Inner Join p.position m Inner Join p.permissions k Inner Join k.permissionType t")
 	List<PermissionWithEmployeeAndPermissionTypeDto> getPermissionWithEmployeeDetails();
 
 
@@ -45,10 +45,6 @@ public interface PermissionRepository extends JpaRepository<PermissionEntity, In
 
 *   @Query(value = "select top 5 p.*, sum(po.quantity) as total_quantity from product p " +"inner join productorder po " +"on p.id = po.product_id " +"group by p.id, p.name " +"order by total_quantity desc", nativeQuery = true)
     List<Product> findTopFiveBestSeller();
-
-
-
-
 
     )
 *

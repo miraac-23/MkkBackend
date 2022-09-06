@@ -29,6 +29,10 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("/api/users")
 public class UserController {
 
+  //  private long EXPIRATIONTIME = 30000;
+
+
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -47,17 +51,11 @@ public class UserController {
                 .setIssuedAt(now)
                 .setSubject(user.getUsername())
                 .setIssuer(ISSUER)
-                //.setExpiration() //TODO: Bitiş süresi hesaplanıp ayarlanacak
+                //.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME )) //TODO: Bitiş süresi hesaplanıp ayarlanacak
                 .signWith(key);
 
         return  ResponseEntity.ok(new JwtResponse(builder.compact(),user.getUsername(), grantedAuthoritiesConvertString(user.getAuthorities())));
 
-
-                //builder.compact();
-
-
-        //Set-Cookie
-        //new ResponseEntity<String>()
     }
 
     private static List<String> grantedAuthoritiesConvertString(Collection<? extends GrantedAuthority> grantedAuthorities){
